@@ -2,10 +2,23 @@ import asn1
 from collections import namedtuple
 MASattr = namedtuple('MASattr', 'type version value')
 
-MAS_types = { 2: 'Bundle Identifier',
+# The following attributes were determined from looking at the JSON attributes for a MAS app and the output
+# of mdls /path/to/the.app and comparing values to the receipt dump:
+#
+# 0x01: Product ID - can be used with: http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=PRODUCTID&mt=8
+# 0x08: Purchase Date
+# 0x0A: Parental Content Rating
+# 0x10: kMDItemAppStoreInstallerVersionID
+# 
+
+MAS_types = { 1: 'Product ID',
+              2: 'Bundle Identifier',
               3: 'Application Version',
               4: 'Opaque Value',
               5: 'SHA-1 Hash',
+              8: 'Purchase Date',
+             10: 'Parental Content Rating',
+             16: 'App Store Installer Version ID',
              17: 'In-App Purchase Receipt' }
 
 def unwind(input):
