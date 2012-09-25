@@ -1,0 +1,3 @@
+[submodule "necessary modules/python-asn1"]
+	path = necessary modules/python-asn1
+	url = git://github.com/geertj/python-asn1

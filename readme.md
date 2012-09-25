@@ -1,10 +1,15 @@
-#pyMASreceipt - 
+#pyMASreceipt - python module for parsing the contents of _MASReceipt/receipt file inside a Mac App Store .app
 
 pyMASreceipt is a python module for parsing the receipt contents of a Mac App Store app (located within the application bundle: Contents/Resources/_MASReceipt/receipt).
+
+It is a best guess at contents, following the documentation provided by Apple at: http://developer.apple.com/library/mac/#releasenotes/General/ValidateAppStoreReceipt/_index.html
+
+This module depends on the module 'python-asn1' by Geert Jansen (geertj@github), available here: https://github.com/geertj/python-asn1
 
 ##Credits
 
 - pyMASreceipt is written by pudquick@github 
+- python-asn1 is written by geertj@github 
 
 ##License
 
