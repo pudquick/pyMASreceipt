@@ -6,6 +6,9 @@ MASattr = namedtuple('MASattr', 'type version value')
 # of mdls /path/to/the.app and comparing values to the receipt dump:
 #
 # 0x01: Product ID - can be used with: http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=PRODUCTID&mt=8
+# 0x04: Opaque Value = Unique Mac App Store compatible numeric mapping to AppleID
+#                      as discovered by MagerValp here: http://magervalp.github.com/2013/03/19/poking-around-in-masreceipts.html
+#                      Also used in: com.apple.storeagent
 # 0x08: Purchase Date
 # 0x0A: Parental Content Rating
 # 0x10: kMDItemAppStoreInstallerVersionID
