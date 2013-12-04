@@ -12,7 +12,18 @@ MASattr = namedtuple('MASattr', 'type version value')
 # 0x08: Purchase Date
 # 0x0A: Parental Content Rating
 # 0x10: kMDItemAppStoreInstallerVersionID
+#
+# Additional material for reading: http://www.mactech.com/sites/default/files/Jalkut-Would_You_Like_a_Receipt_With_That.pdf
+# Seems to indicate a few new types:
+# 0x00: Receipt type
+# 0x0C: LastAuthTime as seen in com.apple.storeagent (likely set at time of download?)
 # 
+# Apple documentation:
+# https://developer.apple.com/library/mac/releasenotes/General/ValidateAppStoreReceipt/Chapters/ReceiptFields.html
+# 0x13: Original version number of application purchased
+# 0x15: Receipt expiration date
+#
+# More are listed in the Apple documentation regarding In-App purchases
 
 MAS_types = { 1: 'Product ID',
               2: 'Bundle Identifier',
