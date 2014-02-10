@@ -9,6 +9,10 @@ MASattr = namedtuple('MASattr', 'type version value')
 # 0x04: Opaque Value = Unique Mac App Store compatible numeric mapping to AppleID
 #                      as discovered by MagerValp here: http://magervalp.github.com/2013/03/19/poking-around-in-masreceipts.html
 #                      Also used in: com.apple.storeagent
+# 0x05: SHA-1 Hahsh = This is the hash that's a checksum of the machine GUID, Apple ID (Opaque Value), and the bundle ID
+#                     for the application.
+#                     Calculation method for the hash: https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateLocally.html#//apple_ref/doc/uid/TP40010573-CH1-SW10
+#                     Under the section "Listing 1-7  Compute the hash of the GUID"
 # 0x08: Purchase Date
 # 0x0A: Parental Content Rating
 # 0x10: kMDItemAppStoreInstallerVersionID
@@ -24,6 +28,19 @@ MASattr = namedtuple('MASattr', 'type version value')
 # 0x15: Receipt expiration date
 #
 # More are listed in the Apple documentation regarding In-App purchases
+#
+# More examples from here: https://github.com/robotmedia/RMStore/blob/master/RMStore/Optional/RMAppReceipt.m#L28
+#
+# InAppPurchaseReceipt = 17;            //   0x11
+# Quantity = 1701;                      // 0x06A5
+# ProductIdentifier = 1702;             // 0x06A6
+# TransactionIdentifier = 1703;         // 0x06A7
+# PurchaseDate = 1704;                  // 0x06A8
+# OriginalTransactionIdentifier = 1705; // 0x06A9
+# OriginalPurchaseDate = 1706;          // 0x06AA
+# SubscriptionExpirationDate = 1708;    // 0x06AC
+# WebOrderLineItemID = 1711;            // 0X06AF
+# CancellationDate = 1712;              // 0x06B0
 
 MAS_types = { 1: 'Product ID',
               2: 'Bundle Identifier',
