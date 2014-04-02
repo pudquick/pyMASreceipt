@@ -94,8 +94,6 @@ def parse_receipt(rec):
             ret_val.append(MASattr(MAS_types.get(y[0][2], '0x%02X' % y[0][2]), y[1][2], y[2][2]))
     return ret_val
 
-"/Applications/Liya.app/Contents/_MASReceipt"
-
 def get_app_receipt(path_to_MAS_app):
     receipt_path = os.path.join(path_to_MAS_app, "Contents/_MASReceipt/receipt")
     dec1 = asn1.Decoder()
