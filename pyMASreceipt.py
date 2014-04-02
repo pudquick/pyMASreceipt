@@ -1,4 +1,4 @@
-import asn1
+import asn1, os.path
 from collections import namedtuple
 MASattr = namedtuple('MASattr', 'type version value')
 
@@ -94,12 +94,18 @@ def parse_receipt(rec):
             ret_val.append(MASattr(MAS_types.get(y[0][2], '0x%02X' % y[0][2]), y[1][2], y[2][2]))
     return ret_val
 
-dec = asn1.Decoder()
-# Read from the 'receipt' file
-dec.start(open('receipt', 'rb').read())
-payload = extract_data(unwind(dec))
-dec = asn1.Decoder()
-dec.start(payload)
+"/Applications/Liya.app/Contents/_MASReceipt"
 
-# Final decoded receipt is here
-receipt = parse_receipt(unwind(dec)[1])
+def get_app_receipt(path_to_MAS_app):
+    receipt_path = os.path.join(path_to_MAS_app, "Contents/_MASReceipt/receipt")
+    dec1 = asn1.Decoder()
+    dec1.start(open(receipt_path, 'rb').read())
+    payload = extract_data(unwind(dec1))
+    dec2 = asn1.Decoder()
+    dec2.start(payload)
+    return parse_receipt(unwind(dec2)[1])
+
+# Example usage:
+#
+# import pyMASreceipt
+# decoded_receipt = pyMASreceipt.get_app_receipt('/Applications/SomeApp.app')
